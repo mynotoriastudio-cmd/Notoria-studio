@@ -9,8 +9,15 @@ Before substantial work:
 3. Read `WORKBOARD.md`.
 4. Read only the relevant `domains/*.md` file(s).
 5. Read ADRs in `decisions/` only when a decision or historical conflict matters.
+6. For any brand/design/content task, resolve the relevant brand SOURCE LOCK before execution.
 
 Do not load every file by default.
+
+## Mandatory personal-brand preflight
+For any task involving Majdi Garbouj personal branding, first read:
+`brands/majdi-personal-brand/SOURCE_LOCK.md`
+
+Do not ask the user to resend the visual identity if the canonical sources listed there are accessible and non-conflicting. External visual references may influence composition, hierarchy and rhythm only; they must never override the canonical Majdi palette, typography, signature, logo or approved assets.
 
 ## Source-of-truth rules
 - GitHub Markdown = durable strategy, definitions, decisions, architecture and shared AI context.
