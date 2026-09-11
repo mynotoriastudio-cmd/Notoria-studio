@@ -1,59 +1,57 @@
 # ASPAR Agent OS
 
-Monorepo de référence pour l’écosystème ASPAR.
+Repository de référence pour l’écosystème ASPAR.
 
-## Périmètre
+> Le repository porte encore techniquement le nom `Notoria-studio`. Son contenu est dédié à ASPAR ; le renommage du repository se fait dans les paramètres GitHub.
 
-Le dépôt couvre les quatre entreprises actives :
+## Start here
 
-- **ASPAR Business** — conception, structuration, modélisation, CAPEX/OPEX, sourcing, exécution, lancement et pilotage de projets business de A à Z.
-- **ASPAR Solutions** — plateforme All-in-One business-first avec POS/ERP, automatisation et ASPAR Agent.
-- **ASPAR Building** — conception et exécution de projets physiques : architecture, zoning, 2D/3D, sourcing, équipements, travaux, smart building et ouverture.
-- **ASPAR Franchise** — audit, modèle économique, DIP/contrats, SOP, formation, CAPEX/OPEX, redevances, développement réseau et gouvernance.
+Pour comprendre l’état actuel d’ASPAR, ne reconstruisez pas le contexte depuis les anciens chats ou snapshots techniques.
 
-Le personal branding de Majdi Garbouj reste une identité transversale, pas une cinquième entreprise.
+Lire dans cet ordre :
 
-## Source de vérité
+1. `ASPAR_CONTEXT.md` — architecture et définitions stables.
+2. `CURRENT_STATE.md` — état stratégique/commercial actuel.
+3. `WORKBOARD.md` — priorités NOW / NEXT / LATER / BLOCKED.
+4. `domains/*.md` — contexte du domaine concerné seulement.
+5. `decisions/*.md` — ADR expliquant les décisions importantes.
+6. `HANDOFF.md` — continuation entre agents/sessions.
 
-- **Supabase** = control plane canonique : marques, workflows, design systems, assets, QA, calendrier éditorial, production, runtimes et décisions.
-- **Google Drive** = documents historiques, sources, preuves et archives encore en migration.
-- **GitHub** = code, architecture, documentation technique et versioning.
-- **Canva** = destination de création/édition lorsque le connecteur est opérationnel.
+Claude Code doit également respecter `CLAUDE.md`.
 
-Principe : **ce qui n’est pas défini dans Supabase ne doit pas être improvisé en production.**
+## ASPAR
 
-## État live au 2026-09-03
+- **ASPAR Business** — étude, conception, structuration et développement de projets business/investissement.
+- **ASPAR Solutions** — Odoo/POS/ERP/CRM, automatisation, IA et opérations digitales.
+- **ASPAR Building** — conception et exécution de projets physiques, zoning, 2D/3D, sourcing, travaux et ouverture.
+- **ASPAR Franchise** — structuration, gouvernance et développement de réseaux.
+- **ASPAR Agent** — couche d’intelligence/action partagée, pas une cinquième société.
+- **Majdi Garbouj** — personal brand transversal et canal d’autorité/acquisition, pas une cinquième entreprise opérationnelle.
 
-Supabase contient 5 marques actives (4 business + Majdi), 15 workflows, 4 runtimes d’orchestration, 5 design systems, 75 idées éditoriales et un cycle éditorial de 8 semaines. ASPAR Solutions est actuellement le seul design system actif ; Business, Building et Franchise restent en DRAFT. Les runtimes de production critiques ne doivent pas être considérés comme prêts sans smoke test réel.
+## Sources de vérité actuelles
 
-## Structure
+- **GitHub Markdown** = stratégie durable, définitions, décisions, architecture et contexte partagé entre IA.
+- **Odoo** = opérations business : CRM, projets, commercial, finance/comptabilité, ventes, POS, stock et autres données opérationnelles pertinentes.
+- **Google Drive** = preuves, sources, documents, archives et assets lourds.
+- **Canva** = production design.
+- **Blender** = production 3D.
+- **Supabase** = backend technique optionnel lorsqu’un besoin concret d’application/runtime le justifie.
+- **Notion** = legacy/référence/démonstration/missions clients ; hors du core ASPAR.
+- **Chats** = surfaces de réflexion temporaires, jamais source canonique à elles seules.
 
-```text
-brands/
-  aspar-business/
-  aspar-solutions/
-  aspar-building/
-  aspar-franchise/
-platform/
-supabase/
-content-factory/
-runtime/
-security/
-docs/
-```
+## Documentation technique historique
 
-## Règle de production
+Le dossier `docs/` contient l’architecture technique et des snapshots construits à différentes étapes du projet. Certains documents peuvent décrire une architecture antérieure centrée sur Supabase.
 
-```text
-REQUEST
-  -> SUPABASE SOURCE LOCK
-  -> PREFLIGHT
-  -> PRODUCTION
-  -> QA
-  -> HUMAN APPROVAL
-  -> CANVA / DELIVERY
-```
+En cas de conflit sur l’état ou la stratégie actuels, la priorité est :
 
-Tout gate critique non prêt doit arrêter la production.
+1. ADR actif dans `decisions/` pour une décision durable ;
+2. `CURRENT_STATE.md` pour l’état stratégique courant ;
+3. système opérationnel réellement concerné pour les données vivantes ;
+4. anciens snapshots `docs/` comme historique/contexte technique.
 
-> Le dépôt GitHub porte encore techniquement le nom `Notoria-studio` car le connecteur actuel ne permet pas de renommer un repository. Le contenu de ce dépôt est désormais dédié à **ASPAR Agent OS**.
+## Principe
+
+Une fonction doit avoir un propriétaire clair. Ne pas créer un nouvel outil, une nouvelle base ou une nouvelle mémoire si une fonction existante couvre déjà correctement le besoin.
+
+Aucun secret, token, mot de passe ou credential client ne doit être commité dans Git.
