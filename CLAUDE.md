@@ -13,6 +13,29 @@ Before substantial work:
 
 Do not load every file by default.
 
+## Mandatory stack-first preflight
+Before recommending, installing, or adding any new tool, SaaS, connector, database, automation platform, publishing platform, analytics product, or agent framework:
+1. Resolve the current ASPAR stack from `CURRENT_STATE.md`, relevant domain files, and active decisions.
+2. Check whether the requested capability is already covered by an existing tool or workflow.
+3. Prefer the existing stack when it can satisfy the need with acceptable effort and reliability.
+4. Add a new tool only if there is a verified capability gap, or if it clearly replaces an existing tool/cost or unlocks a direct sale/delivery need.
+5. Do not recommend a paid or redundant service merely because a connector exists.
+6. State the exact gap that justifies any new tool recommendation.
+
+Current core stack to recognize before proposing additions:
+- ChatGPT = strategy, research, architecture, QA and connected cloud tools.
+- Claude Code/local stack = primary local builder/executor for local files, code and MCP work.
+- LangGraph + LangChain = orchestration and pre-execution/source-routing layer being completed; do not bypass its intended SOURCE_LOCK behavior in production workflows.
+- GitHub = durable context, code, architecture, decisions and versioning.
+- Google Drive = source documents, evidence, approved assets and heavy files.
+- Odoo = operational business system / CRM / sales / projects / stock / related operations.
+- Canva = design production and editable social templates.
+- Blender = 3D production when needed.
+- Supabase = optional backend only for a concrete application/runtime need.
+- Notion = legacy/reference/demo/client-use; not ASPAR core.
+
+Cost rule: avoid new paid tools unless they replace an existing cost/function or unlock a direct sale/delivery requirement.
+
 ## Mandatory personal-brand preflight
 For any task involving Majdi Garbouj personal branding, first read:
 `brands/majdi-personal-brand/SOURCE_LOCK.md`
