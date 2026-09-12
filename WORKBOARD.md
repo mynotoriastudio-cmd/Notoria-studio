@@ -3,7 +3,7 @@
 Rule: maximum **3 items in NOW**. Everything else stays in NEXT, LATER or BLOCKED.
 
 ## NOW
-1. Finalize the shared GitHub Markdown memory so Claude Code and ChatGPT read the same durable context.
+1. Complete the executable **LangGraph + LangChain pre-execution gate** (`classify -> resolve_brand -> source_router -> retrieve -> validate -> SOURCE_LOCK PASS/STOP -> plan -> execute -> QA -> writeback`) and pass a real smoke test before any new carousel/image generation.
 2. Define and sell the first simple cash-generating offer(s) around Business Systems / Odoo / AI / ASPAR Solutions.
 3. Record and publish the first founder-led master video, then repurpose it instead of building separate content factories.
 
@@ -20,6 +20,7 @@ Rule: maximum **3 items in NOW**. Everything else stays in NEXT, LATER or BLOCKE
 - More advanced content automation after repeated human-approved production reveals stable patterns.
 
 ## BLOCKED
+- **New image/carousel generation:** blocked until the LangGraph + LangChain pre-execution gate exists and its smoke test passes.
 - Full Brand Factory commercialization: blocked by lack of sufficient real operating proof and limited capital/time.
 - Any promise of fully autonomous client operations: blocked until capability, permissions and reliability are demonstrated.
 
