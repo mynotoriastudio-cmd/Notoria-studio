@@ -1,6 +1,6 @@
 # CURRENT_STATE.md
 
-Snapshot: 2026-09-11
+Snapshot: 2026-09-12
 
 ## Business priority
 ASPAR is in **monetization-before-expansion** mode.
@@ -32,6 +32,7 @@ Near-term personal income target discussed: **5,000 TND/month**. This is a comme
 
 ## Core stack status
 - **GitHub:** durable context, architecture, decisions, versioning.
+- **LangGraph + LangChain:** executable deterministic pre-execution gate implemented in `src/aspar_agent/`; SOURCE_LOCK PASS/STOP, conditional routing, LangChain tools, in-memory checkpointing, optional PostgresSaver, `langgraph.json`, local CLI dependency and smoke runner are present.
 - **Odoo:** intended operational center for CRM, projects, commercial operations, accounting/finance, sales, POS, stock and related business processes.
 - **Drive:** evidence, source documents, archives and heavy assets.
 - **Canva:** design production.
@@ -40,11 +41,21 @@ Near-term personal income target discussed: **5,000 TND/month**. This is a comme
 - **Supabase:** optional technical backend; not mandatory for every workflow.
 - **Notion:** outside core; retained only as legacy/reference/demo/client-use where useful.
 
+## LangGraph verification
+GitHub Actions verified the gate on Python 3.12 with current resolved dependencies (LangChain 1.4.0, LangGraph 1.2.11 during the verification run):
+- `7 passed` pytest suite;
+- smoke output: `{"pass_path": "PASS", "status": "ok", "stop_path": "STOP"}`;
+- LangGraph CLI/in-memory development dependency installs successfully;
+- Postgres checkpoint package imports through the configured optional dependency.
+
+The EXECUTE node intentionally remains `preflight_only`: it returns an execution-ready contract and does not itself call Canva/image/social side effects.
+
 ## Constraints
 - Avoid new paid tools unless they replace an existing cost/function or unlock a direct sale/delivery requirement.
 - Avoid duplicate databases and duplicate task systems.
 - Do not treat old chat content as current truth when it conflicts with active repository decisions.
 - Do not publish unvalidated pricing or claim unproven proprietary concepts are established franchises.
+- Side-effecting visual/content execution must continue to respect the SOURCE_LOCK contract and must not bypass missing canonical sources.
 
 ## Current architectural gap
-The shared-memory layer is being formalized. Local/cloud synchronization and deeper automated agent handoff may be added later, but are not prerequisites for the first working memory system.
+The core LangGraph/LangChain gate is implemented and verified. The remaining integration work is to make local Claude Code/MCP and downstream execution surfaces call this gate as their mandatory entry point, then add concrete source adapters only when required. This is integration/deployment work, not a redesign of the gate.
