@@ -3,15 +3,16 @@
 Rule: maximum **3 items in NOW**. Everything else stays in NEXT, LATER or BLOCKED.
 
 ## NOW
-1. Complete the executable **LangGraph + LangChain pre-execution gate** (`classify -> resolve_brand -> source_router -> retrieve -> validate -> SOURCE_LOCK PASS/STOP -> plan -> execute -> QA -> writeback`) and pass a real smoke test before any new carousel/image generation.
-2. Define and sell the first simple cash-generating offer(s) around Business Systems / Odoo / AI / ASPAR Solutions.
-3. Record and publish the first founder-led master video, then repurpose it instead of building separate content factories.
+1. Define and sell the first simple cash-generating offer(s) around Business Systems / Odoo / AI / ASPAR Solutions.
+2. Record and publish the first founder-led master video, then repurpose it instead of building separate content factories.
+3. Wire the verified LangGraph pre-execution gate into the local Claude Code/MCP execution surface so downstream Canva/image/social actions enter through the same gate.
 
 ## NEXT
 - Validate pricing, delivery scope and contribution margin for the first sellable offer.
 - Build one complete proof/demo around a real or representative business workflow.
 - Simplify content production into one-source-to-many-outputs.
 - Formalize the minimum client-facing ASPAR Agent scope versus internal delivery engine.
+- Add concrete Drive/Canva/Odoo/Supabase source adapters only where an execution workflow requires them; keep the current injected-source interface as the boundary.
 
 ## LATER
 - Mature proprietary ASPAR Business concepts after commercial traction and/or operating proof.
@@ -20,9 +21,14 @@ Rule: maximum **3 items in NOW**. Everything else stays in NEXT, LATER or BLOCKE
 - More advanced content automation after repeated human-approved production reveals stable patterns.
 
 ## BLOCKED
-- **New image/carousel generation:** blocked until the LangGraph + LangChain pre-execution gate exists and its smoke test passes.
 - Full Brand Factory commercialization: blocked by lack of sufficient real operating proof and limited capital/time.
 - Any promise of fully autonomous client operations: blocked until capability, permissions and reliability are demonstrated.
+
+## Completed gate
+The executable LangGraph + LangChain pre-execution gate is implemented and CI-verified. Its required path is:
+`intake -> classify -> resolve_role -> resolve_brand -> source_router -> retrieve_context -> validate -> SOURCE_LOCK PASS/STOP -> plan -> execute(preflight) -> QA -> writeback`.
+
+The verified smoke test covers both PASS and STOP. Visual Majdi requests STOP when canonical Canva/Drive sources are not resolved; factual claims STOP without verified evidence.
 
 ## Execution rule
 Before adding a new NOW task, move or finish an existing NOW item. Do not use this file as an unlimited backlog.
